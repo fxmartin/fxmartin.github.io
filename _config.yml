@@ -8,6 +8,8 @@ name: FX's blog
 # Short bio or description (displayed in the header)
 description: Thoughts & experiments on new tech
 
+# Image to use for the avatar
+avatar: avatar.png
 
 #
 # Flags below are optional
