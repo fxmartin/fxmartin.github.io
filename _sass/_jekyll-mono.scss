@@ -309,3 +309,22 @@ button.button-primary:focus {
 	opacity: 1;
 	pointer-events: auto;
 }
+
+.share-page {
+    text-align: center;
+    background: transparent;
+    color: $mono-color;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 1.5 * 10 0;
+
+    a {
+        font-weight: 700;
+        color: grey;
+        margin-left: 10px;
+
+        &:hover {
+            border-bottom: 1px dashed #fff;
+        }
+    }
+}

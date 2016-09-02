@@ -1,11 +1,10 @@
-# Jekyll-Mono
+# Hic Terminus Haeret
 
-**Jekyll-Mono** is a simple and elegant GitHub Profile cum Blog theme based on Barry Clark's [Jekyll-Now](https://github.com/barryclark/jekyll-now). It's a result of my attempt to learn **Jekyll** and create a minimalistic theme to put up my CV alongwith some blog posts.
+This repository contains my blog.
 
-It is crafted with 💙 by [Akshay Agarwal](https://github.com/AkshayAgarwal007).
+It is based on **Jekyll-Mono**, which is a simple and elegant GitHub Profile cum Blog theme based on Barry Clark's [Jekyll-Now](https://github.com/barryclark/jekyll-now).
 
-![Jekyll-Mono Home Page](/images/ss.png)
-
+I slightly personalised it so it's a result of my attempt to start learning **Jekyll** and create a minimalistic theme to create my personal web site where I share ideas and experiments.
 
 ## What is Jekyll?
 
@@ -31,11 +30,11 @@ Jekyll-Mono also comes with the option of setting up the color scheme of your bl
 A look at the customisations you can do with _variable.scss
 
 ```
-// Main theme colors 
+// Main theme colors
 // Some cool main theme colors(violet:#8476ad;blue:#5cacee;red:#ff7373,#ff6f69;green:#6acf64,#2ddbb3;orange:#ffa268)
 
 $mono-color:#8476ad;                // main theme color(header, links, footer icons, buttons, post-title)
-$hl-color: $darkGray;              // header link color (author name and posted on date) for blog post meta 
+$hl-color: $darkGray;              // header link color (author name and posted on date) for blog post meta
 $navbar-hover-color:$gray;        // navbar hover color (site name and navbar links hover color)
 $link-color: $darkerGray;        // normal hyperlink color other than the ones above.
 
@@ -43,12 +42,12 @@ $link-color: $darkerGray;        // normal hyperlink color other than the ones a
 // Heading colors
 // You can play around with these too!
 $h1-color: $mono-color;
-$h2-color: $mono-color; 
-$h3-color: $darkerGray; 
+$h2-color: $mono-color;
+$h3-color: $darkerGray;
 $h4-color: $gray;
-``` 
+```
 Have a look at Jekyll-Mono with four different main theme colors.
- 
+
 ![Jekyll Mono in 4 different colors](/images/ss-color.png)
 
 Finally you need to set up your avatar. Pick up your avatar, resize it to 220x220px simply using paint or any editor of your choice and upload it to the images folder. Now open _variables.scss, you'll see something like this `$avatar: "/images/avatar.jpg";`. Here change the avatar.jpg to what you have uploaded just now.
@@ -65,7 +64,7 @@ To create a post just click on create new file button in /_posts/. Create a new 
 You can see the front matter at the top of /_posts/2016-03-06-Eternal-Lorem-Ipsum.md. It looks something like this. You have to change the title and author according to your post. The layout will remain the same.
 
 ```
---- 
+---
 layout: post
 title: The Eternal Lorem Ipsum Placeholder Text Here
 author: Author Name
@@ -86,12 +85,12 @@ You can see the live demo of this theme at http://akshayagarwal007.github.io/Jek
 
 For setting up your development environment you can follow the official Jekyll [Documentation](https://jekyllrb.com/docs/installation/). It's a little bit complicated for Windows users. Let's see how it's done on windows:
 
-1. **Install Chocolatey**. **[Chocolatey](https://chocolatey.org)** is a package manager for windows. It's awesome. 
+1. **Install Chocolatey**. **[Chocolatey](https://chocolatey.org)** is a package manager for windows. It's awesome.
    Open a command propmt with administrator access. Paste this. Hit Enter and restart the command prompt.
-   
+
    ```
    @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
-   
+
    ```
 
 2. **Install Ruby** : In your command prompt type `choco install ruby -y`.
@@ -109,6 +108,7 @@ For setting up your development environment you can follow the official Jekyll [
 
 ## Credits
 
+* [Akshay Agarwal](https://github.com/AkshayAgarwal007) for creating Jekyll-Mono on which this theme is based.
 * [Barry Clark](https://github.com/barryclark) for creating [Jekyll-Now](https://github.com/barryclark/jekyll-now) on which this theme is based.
 * [Manoela Ilic](https://github.com/crnacura) of Codrops for writing awesome articles on web design.
 * [David Miller](https://github.com/davidtmiller) of Blackrock Digital for making awesome open source themes.
@@ -117,21 +117,10 @@ For setting up your development environment you can follow the official Jekyll [
 
 ## Contributing
 
-* Found a bug? Report it on GitHub [Issues](https://github.com/AkshayAgarwal007/Jekyll-Mono/issues) and include a code sample.
-* [Fork](https://github.com/AkshayAgarwal007/Jekyll-Mono/fork) the repository and start your own blog using it and let me know about it so that I can include a reference to it here. Probably the best way you can contribute :)
-* If you find anything that's wrong or want to talk to me about anything related to this theme or want to contribute in any way, please feel free to [mail me](mailto:agarwal.akshay.akshay8@gmail.com).
+* Found a bug? Report it on GitHub [Issues](https://github.com/fxmartin/fxmartin.github.io/issues) and include a code sample.
+* [Fork](https://github.com/fxmartin/fxmartin.github.io/fork) the repository and start your own blog using it and let me know about it so that I can include a reference to it here. Probably the best way you can contribute :)
+* If you find anything that's wrong or want to talk to me about anything related to this theme or want to contribute in any way, please feel free to [mail me](mailto:blog@fxmartin.me).
 
 ## License
 
-Jekyll-Mono is licensed under [MIT](https://github.com/AkshayAgarwal007/Jekyll-Mono/blob/master/LICENSE.txt).
-
-
-
-
-
-
-
-
-
-
-  
+Jekyll-Mono is licensed under [MIT](https://raw.githubusercontent.com/fxmartin/fxmartin.github.io/master/LICENSE.txt).

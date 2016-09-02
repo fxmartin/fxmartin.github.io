@@ -19,3 +19,11 @@ Director France, Syncordis Consulting
 ## Contact me
 
 [mail@fxmartin.me](mailto:mail@fxmartin.me)
+
+## Disclaimer
+
+This is a personal weblog. The opinions expressed here represent my own and not those of my employer.
+
+In addition, my thoughts and opinions change from time to time... I consider this a necessary consequence of having an open mind. This weblog is intended to provide a semi-permanent point in time snapshot and manifestation of the various memes running around my brain, and as such any thoughts and opinions expressed within out-of-date posts may not the same, nor even similar, to those I may hold today.
+
+*text shamelessly taken from [Does Your Blog Need a Disclaimer?](http://www.blogherald.com/2007/10/01/does-your-blog-need-a-disclaimer/)*
