@@ -17,7 +17,7 @@ avatar: avatar.png
 # Set-up for local development, using jekyll serve
 # Add draft and future posts
 #show_drafts: true
-#future: true
+future: true
 
 #
 # Flags below are optional
