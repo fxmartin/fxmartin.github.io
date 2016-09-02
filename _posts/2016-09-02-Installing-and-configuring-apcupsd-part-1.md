@@ -12,6 +12,7 @@ Linux comes with GPL licensed open source apcupsd server ( daemon ) that can be 
 # Step 1 - Check that the UPS is connected
 
 Enter ```lsusb```to check that the UPS is recognized. In my case it appears as ```Device 006``` in the output below.
+
 ```
 Bus 001 Device 006: ID 051d:0002 American Power Conversion Uninterruptible Power Supply
 Bus 001 Device 005: ID 0658:0200 Sigma Designs, Inc.
@@ -43,12 +44,14 @@ Next, defines the type of cable connecting the UPS to your Linux server. In this
 
 Possible generic choices for cable are – simple, smart, ether, and usb. For USB UPSes, please leave the DEVICE directive blank. For
 other UPS types, you must specify an appropriate port or address (see config file for detailed information):
+
 ```
 ## set ups type to usb ##
 UPSTYPE usb
 DEVICE```
 
 The below commands will perform these changes automatically:
+
 ```
 sed -i -e "s/#UPSNAME/UPSNAME mainups/g" /etc/apcupsd/apcupsd.conf
 sed -i -e "s/UPSCABLE smart/UPSCABLE usb/g" /etc/apcupsd/apcupsd.conf
@@ -97,6 +100,7 @@ The default port is set to 3551 for sending STATUS and EVENTS data over the netw
 # Step 4 - Test acpupsd
 
 Type the following command: ```sudo apctest```. You should get an output like below:
+
 ```
 2016-09-02 18:10:01 apctest 3.14.12 (29 March 2014) debian
 Checking configuration ...
@@ -134,6 +138,7 @@ Select function number:
 You can test your ups or read test results.
 
 To see the current status of your UPS enter the following command: ```apcaccess```. You should an output similar to the one below:
+
 ```
 APC      : 001,036,0866
 DATE     : 2016-09-02 16:22:51 +0000
@@ -175,6 +180,7 @@ END APC  : 2016-09-02 16:22:55 +0000
 ```
 
 That's it, **apcupsd** is now running. In case of power failure and if you're connected via ssh, you'll get broadcast messages:
+
 ```
 HypriotOS/armv7: pirate@swarm-master in ~
 
@@ -189,6 +195,7 @@ Power has returned on UPS MAINUPS...
 ```
 
 To view the history of events, enter the following command ```tail -f /var/log/apcupsd.events```, and you'll get something like that:
+
 ```
 2016-09-01 17:24:16 +0200  apcupsd shutdown succeeded
 2016-09-01 17:24:26 +0200  apcupsd 3.14.12 (29 March 2014) debian startup succeeded
