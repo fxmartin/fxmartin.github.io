@@ -3,9 +3,7 @@ layout: post
 title: Installing and configuring apcupsd (UPS Management Software) - Part 1
 author: FX
 ---
-My PI3 cluster is connected to an APC SmartUPS using a usb cable and I would like to detect a power failure. If power is not restored the server must shutdown when the battery is exhausted. How do I configure and use my APC SmartUPS under Debian operating system for power management?
-
-The purpose of this blog is to explain how I answered the above questions.
+My PI3 cluster is connected to an APC SmartUPS using a usb cable and I would like to detect a power failure. If power is not restored the server must shutdown when the battery is exhausted. This blog post explains how to install and configure **[apcupsd](http://www.apcupsd.org/)**.
 
 ![APC Back-UPS 950](/images/2016-09-02-Installing-and-configuring-apcupsd-part-1.jpg)
 
@@ -13,7 +11,7 @@ Linux comes with GPL licensed open source apcupsd server ( daemon ) that can be 
 
 # Step 1 - Check that the UPS is connected
 
-Enter ```lsusb```to check that the UPS is recognized. In my case it appears as ```Device 006``` in the output below.
+Enter ```lsusb``` to check that the UPS is recognized. In my case it appears as ```Device 006``` in the output below.
 
 ```
 Bus 001 Device 006: ID 051d:0002 American Power Conversion Uninterruptible Power Supply
