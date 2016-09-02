@@ -32,11 +32,11 @@ In ```/etc/default/apcupsd``` change ```ISCONFIGURED``` from no to yes:
 
 ```sed -i -e "s/ISCONFIGURED=no/ISCONFIGURED=yes/g" /etc/default/apcupsd```
 
-# Step3 - Configure apcupsd
+# Step 3 - Configure apcupsd
 
-The **apcuspd** daemon is configured through one single file: ```/etc/apcupsd/apcupsd.conf```. This standard installation comes with a default set-up, which only needs minimal tweaks.
+The **apcuspd** daemon is configured through one single file: ```/etc/apcupsd/apcupsd.conf```. The standard installation comes with a default set-up, which only needs minimal tweaks.
 
-First, give your UPS a name. This is particulary useful if you have multiple UPSes. This does not set the EEPROM. It should be 8 characters or less:
+First, give your UPS a name. This is particularly useful if you have multiple UPSes. It should be 8 characters or less:
 
 ```UPSNAME mainups```
 
@@ -44,11 +44,10 @@ Next, defines the type of cable connecting the UPS to your Linux server. In this
 
 ```UPSCABLE usb```
 
-Possible generic choices for cable are – simple, smart, ether, and usb. For USB UPSes, please leave the DEVICE directive blank. For
-other UPS types, you must specify an appropriate port or address (see config file for detailed information):
+Possible generic choices for cable are – simple, smart, ether, and usb. For USB UPSes, please leave the DEVICE directive blank. For other UPS types, you must specify an appropriate port or address (see config file for detailed information):
 
 ```
-## set ups type to usb ##
+## Setup type to usb ##
 UPSTYPE usb
 DEVICE
 ```
@@ -86,13 +85,11 @@ If during a power failure, the UPS has run on batteries for TIMEOUT many seconds
 
 ## Configuration of apcupsd network information server
 
-There are two major ways of running **apcupsd** on your system. The first is a standalone configuration where **apcupsd** controls a single UPS, which powers the computer. This is the most common configuration. The second configuration is a master/slave configuration, where one UPS powers several computers, each of which runs a copy of **apcupsd**. The computer that controls the UPS is called the master, and the other computers are called slaves. The master copy of **apcupsd** communicates with and controls the slaves via an ethernet connection.
-
 You can use CGI or GUI programs from remote system to get information about your UPS. Turn on network information server:
 
 ```NETSERVER on```
 
-For the master node as explained above for the second configuration, use the loopback address (127.0.0.1) to accept connections only from the local machine (default).
+Use the loopback address (127.0.0.1) to accept connections only from the local machine (default).
 
 ```NISIP 127.0.0.1```
 
