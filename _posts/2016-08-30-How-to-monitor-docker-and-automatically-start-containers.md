@@ -45,9 +45,10 @@ WantedBy=default.target
 > **Note**: when trying to implement my own instructions for docker-ui I encountered an issue. The container was stopping and restarting within seconds. It took me sometime to realise that you cannot *just* copy/paste the command line you use to launch manually the container. Indeed the option -d must not be specified in a service file. So the ExecStart for Dockerui is ```docker run -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock --name=dockerui hypriot/rpi-dockerui```
 
 To start using the service, reload ```systemd``` and start the service:
-```
-sudo systemctl daemon-reload
-sudo systemctl start docker-ca_advisor.service```
+
+```sudo systemctl daemon-reload```
+
+```sudo systemctl start docker-ca_advisor.service```
 
 To enable the service at system startup, execute:
 
