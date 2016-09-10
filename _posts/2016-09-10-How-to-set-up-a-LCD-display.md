@@ -16,8 +16,9 @@ Below is the Raspberry Pi 2 & 3 Pin Mappings:
 
 ![PI PIN mappings](/images/2016-09-10-How-to-set-up-a-LCD-display-03.jpg)
 
+So connect the PINs 3, 4, 5 & 6 and you're good to go.
 
-After connecting the panel you’ll need to enable I2C with ```raspi-config Advanced options```and install the I2C tools and associated Python libraries.
+After connecting the panel you’ll need to enable I2C with ```raspi-config Advanced options``` and install the I2C tools and associated Python libraries.
 
 ```
 sudo apt-get install i2c-tools
@@ -25,7 +26,7 @@ sudo apt-get install python-dev
 sudo pip install psutil
 ```
 
-Check if the LCD display is recognized and collect its address ```sudo i2cdetect -y 1```. You should get something like:
+Check if the LCD display is recognized and collect its address with the command ```sudo i2cdetect -y 1```. You should get something like:
 
 ```
 0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
@@ -39,6 +40,8 @@ Check if the LCD display is recognized and collect its address ```sudo i2cdetect
 70: -- -- -- -- -- -- -- --
 ```
 
+In my case, the LCD address is ```3f```.
+
 Download the [python program](/sources/lcd_i2c.py), and update the LCD address:
 
 ```
@@ -49,4 +52,16 @@ LCD_WIDTH = 20   # Maximum characters per line
 
 Run the program by typing ```sudo python lcd_i2c.py``` and you'll get a display similar to the image at the top of this post.
 
-This sample program displays system information. For the network part, it is defined by default to display the IP address of ```wlan0```. Replace by ```eth0```if your PI is connected with a LAN cable.
+This sample program displays system information. For the network part, it is defined by default to display the IP address of ```wlan0```. Replace by ```eth0``` if your PI is connected with a LAN cable.
+
+To execute this python script every 30 seconds for example, use ```crontab```.
+
+```crontab -l``` will display the existing recurring commands and ```crontab -e```to edit it. Add the below line to execute the script every 5 minutes:
+
+```*/5 * * * * sudo python /home/pirate/lcd_i2c.py```
+
+Note: Do not forget to specify the right path to your script!
+
+To run it every minute:
+
+```* * * * * sudo python /home/pirate/lcd_i2c.py```

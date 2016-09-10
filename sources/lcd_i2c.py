@@ -126,7 +126,8 @@ def main():
   lcd_init()
 
   # Display system stats
-  lcd_string("CPU  : "+str(psutil.cpu_percent()) + '%',LCD_LINE_1)
+  temp = round(int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1e3,2)
+  lcd_string("CPU  : "+str(psutil.cpu_percent()) + '% - ' + str(temp) + 'C',LCD_LINE_1)
 
   # Display memory stats  
   memory = psutil.virtual_memory()
