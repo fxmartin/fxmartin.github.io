@@ -54,9 +54,9 @@ Run the program by typing ```sudo python lcd_i2c.py``` and you'll get a display 
 
 This sample program displays system information. For the network part, it is defined by default to display the IP address of ```wlan0```. Replace by ```eth0``` if your PI is connected with a LAN cable.
 
-To execute this python script every 30 seconds for example, use ```crontab```.
+To execute this python script on a peiodic basis, use ```crontab```.
 
-```crontab -l``` will display the existing recurring commands and ```crontab -e```to edit it. Add the below line to execute the script every 5 minutes:
+```crontab -l``` will display the existing recurring commands and ```crontab -e``` will edit it. Add the below line to execute the script every 5 minutes:
 
 ```*/5 * * * * sudo python /home/pirate/lcd_i2c.py```
 
