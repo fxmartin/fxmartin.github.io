@@ -66,9 +66,10 @@ To run it as a service, have a look at [fxmartin/python-i2c-lcd](https://github.
 
 # Credits
 
-- https://gist.github.com/tstellanova/7323116
-- http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/
-- http://www.root9.net/2012/10/raspberry-pi-lcd-scroller-tutorial.html
-- https://learn.pimoroni.com/tutorial/networked-pi/raspberry-pi-system-stats-python
-- http://www.cyberciti.biz/faq/linux-find-out-raspberry-pi-gpu-and-arm-cpu-temperature-command/
-- https://github.com/sweetpi/python-i2c-lcd
+- [https://gist.github.com/tstellanova/7323116](https://gist.github.com/tstellanova/7323116)
+- [http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/](http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/)
+- [http://www.root9.net/2012/10/raspberry-pi-lcd-scroller-tutorial.html](http://www.root9.net/2012/10/raspberry-pi-lcd-scroller-tutorial.html)
+- [https://learn.pimoroni.com/tutorial/networked-pi/raspberry-pi-system-stats-python](https://learn.pimoroni.com/tutorial/networked-pi/raspberry-pi-system-stats-python)
+- [http://www.cyberciti.biz/faq/linux-find-out-raspberry-pi-gpu-and-arm-cpu-temperature-command/](http://www.cyberciti.biz/faq/linux-find-out-raspberry-pi-gpu-and-arm-cpu-temperature-command/)
+- [https://github.com/sweetpi/python-i2c-lcd](https://github.com/sweetpi/python-i2c-lcd)
+- [https://codereview.stackexchange.com/questions/75574/ping-function-in-python](https://codereview.stackexchange.com/questions/75574/ping-function-in-python)
