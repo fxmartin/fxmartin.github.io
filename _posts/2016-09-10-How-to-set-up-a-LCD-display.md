@@ -54,7 +54,7 @@ Run the program by typing ```sudo python lcd_i2c.py``` and you'll get a display 
 
 This sample program displays system information. For the network part, it is defined by default to display the IP address of ```wlan0```. Replace by ```eth0``` if your PI is connected with a LAN cable.
 
-To execute this python script on a peiodic basis, use ```crontab```.
+To execute this python script on a periodic basis, use ```crontab```.
 
 ```crontab -l``` will display the existing recurring commands and ```crontab -e``` will edit it. Add the below line to execute the script every 5 minutes:
 
@@ -62,6 +62,13 @@ To execute this python script on a peiodic basis, use ```crontab```.
 
 Note: Do not forget to specify the right path to your script!
 
-To run it every minute:
+To run it as a service, have a look at [fxmartin/python-i2c-lcd](https://github.com/fxmartin/python-i2c-lcd).
 
-```* * * * * sudo python /home/pirate/lcd_i2c.py```
+# Credits
+
+- https://gist.github.com/tstellanova/7323116
+- http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/
+- http://www.root9.net/2012/10/raspberry-pi-lcd-scroller-tutorial.html
+- https://learn.pimoroni.com/tutorial/networked-pi/raspberry-pi-system-stats-python
+- http://www.cyberciti.biz/faq/linux-find-out-raspberry-pi-gpu-and-arm-cpu-temperature-command/
+- https://github.com/sweetpi/python-i2c-lcd
