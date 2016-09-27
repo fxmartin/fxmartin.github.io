@@ -3,6 +3,8 @@ layout: post
 title: How to setup a Docker Swarm cluster with Raspberry Pi's
 author: FX
 ---
+*Update 27-sep-2016: Add instructions on auto-mounting and sharing USB key*
+
 I've been playing with [Raspberry Pis](https://en.wikipedia.org/wiki/Raspberry_Pi) for several years now. My very first one was a PI1+, from 2014. I also discovered [Docker](https://www.docker.com/) in 2015, after having used heavily virtual machines with [VMware Fusion](http://www.vmware.com/products/fusion.html) on my Mac and [Vagrant/Homestead](https://laravel.com/docs/5.3/homestead) for my pet project PHP/Laravel.
 
 I'm a strong believer of Docker and find it a natural successor of virtual machines. Docker has evolved extremely fast in the past 12 months, from [Docker Toolbox](https://docs.docker.com/machine/get-started/), which was relying on a virtual machine (Virtualbox or VMWare), to [Docker for Mac and Windows](https://docs.docker.com/docker-for-mac/docker-toolbox/), relying on native OS virtualization, [hyperkit](https://github.com/docker/HyperKit/) for MacOs and [Hyper-V](https://en.wikipedia.org/wiki/Hyper-V) for Windows and now [Swarm mode](https://docs.docker.com/engine/swarm/key-concepts/), which is a true revolution as far as deploying redundant high availability architecture is concerned. Read [MySQL on Docker: Introduction to Docker Swarm Mode and Multi-Host Networking](http://severalnines.com/blog/mysql-docker-introduction-docker-swarm-mode-and-multi-host-networking) if you're not convinced.
@@ -449,6 +451,108 @@ You will get some output like this.
      remote           refid      st t when poll reach   delay   offset  jitter
 ==============================================================================
  192.168.50.1    151.80.19.218    3 u   64   64    3    0.428   -9.072   0.685
+```
+
+# How to auto-mount and share a USB key
+
+Because I want to run a [local docker registry](https://github.com/docker/distribution) I decided to add a 128 Gb USB key to use as local storage.
+
+Identify the drive, in this case it's /dev/sda1 with type ext4:
+
+```
+/dev/sda1: LABEL="usb_data" UUID="4d70ebc5-f544-40ff-a50d-d28a58bc58ab" TYPE="ext4"
+/dev/mmcblk0p1: SEC_TYPE="msdos" LABEL="HypriotOS" UUID="7075-EEF7" TYPE="vfat"
+/dev/mmcblk0p2: LABEL="root" UUID="2a81f25a-2ca2-4520-a1a6-c9dd75527c3c" TYPE="ext4"
+/dev/mmcblk0: PTTYPE="dos"
+```
+
+Create a directory it will be mounted at '''sudo mkdir /mnt/usb'''.
+
+Own it: ```sudo chown -R pirate:pirate /mnt/usb```
+
+At this stage you could manually mount it with ```sudo mount -t ext4 /dev/sda1 /mnt/usb```.
+
+But let's auto-mount it instead : ```sudo nano /etc/fstab```and add the following line :
+
+```
+# Automatic mount of the USB key plugged locally
+UUID=a812b982-f1bf-4b1f-8726-6e21f1a2a216 /mnt/usb ext4		rw,relatime	0	2
+```
+
+However I wanted to go a bit further and make this disk available to all four of the nodes. To do this I used NFS and autofs. On all four of the nodes you’ll need to go ahead and install the NFS client software,
+
+```
+sudo apt-get install nfs-common
+```
+
+and on all slave nodes you’ll need to create a mount point
+
+```
+sudo mkdir /mnt/nfs
+sudo chown -R pirate:pirate /mnt/nfs
+```
+
+Then on the head node, swarm-master, you’ll need to install the NFS server software
+
+```
+sudo apt-get install nfs-server
+```
+
+and edit the /etc/exports file,
+
+```
+/mnt/usb swarm-slave-1(rw,sync)
+/mnt/usb swarm-slave-2(rw,sync)
+/mnt/usb swarm-slave-3(rw,sync)
+/mnt/usb swarm-slave-4(rw,sync)
+/mnt/usb MacBookPro(rw,sync,insecure,all_squash,no_subtree_check,anonuid=1000,anongid=1000)
+```
+
+to add the three compute nodes. After doing that you’ll need to restart the RPC services,
+
+```
+sudo update-rc.d rpcbind enable && sudo update-rc.d nfs-common enable
+sudo reboot
+```
+
+After rebooting you can check from one of the compute nodes to make sure that rpi0 is exporting the disk over NFS correctly. At this point you could pretty easily just edit the /etc/fstab file and add the disks. However that might prove problematic depending on the order in which the nodes boot. Instead on all three of the compute nodes you should install autofs,
+
+```
+sudo apt-get install autofs
+```
+
+and then edit the /etc/auto.master file adding
+
+```
+/mnt/nfs /etc/auto.nfs
+```
+
+at the end. Then create the /etc/auto.nfs file, adding,
+
+```
+swarm-master   swarm-master.local/mnt/usb
+```
+
+and restart the autofs service,
+
+```
+sudo /etc/init.d/autofs restart
+```
+
+if all goes well at this point if you change to the /mnt/nfs/rpi0/ directory and the disk attached to the head node should automatically mount itself. You can check,
+
+```
+$ df -h
+Filesystem                                        Size  Used Avail Use% Mounted on
+/dev/root                                          15G  1.8G   12G  14% /
+devtmpfs                                          427M     0  427M   0% /dev
+tmpfs                                             431M     0  431M   0% /dev/shm
+tmpfs                                             431M  6.0M  426M   2% /run
+tmpfs                                             5.0M     0  5.0M   0% /run/lock
+tmpfs                                             431M     0  431M   0% /sys/fs/cgroup
+/dev/mmcblk0p1                                     64M   30M   34M  47% /boot
+//volume.local/Francois-Xavier Martin's Ti/Plex/  1.9T 1003G  859G  54% /home/pirate/plex/data
+swarm-master.local:/mnt/usb                       114G  1.2G  107G   2% /mnt/nfs
 ```
 
 # Set-up the Docker Swarm
