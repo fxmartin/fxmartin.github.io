@@ -14,5 +14,8 @@ Enter the following command:
 
 ```brew install git```
 
-In order to maximie
-After you've checked for existing SSH keys, you can generate a new SSH key to use for authentication, then add it to the ssh-agent.
+In order to maximise security it is highly recommended to connect either through the HTTPS method or via SSH.
+
+If you have enabled double factor authentication it might be difficult to configure. In that case use the SSH config.
+
+After you've checked for existing SSH keys, you can generate a new SSH key to use for authentication, then add it to the ssh-agent and to your Git account.
