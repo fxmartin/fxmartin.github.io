@@ -96,7 +96,7 @@ With this setup the Pi4 will show up as a ethernet device with an IP address of 
 
 Notes:
 So far I did not manage to have the iPad get its IP from the Raspberry so for the time being I set it up manually as follows:
-[iPad Ethernet set-up](/images/2020-02-09-Connecting-a-Raspberry-PI-4-to-an-Ipad-iPad-Ethernet-Setup.jpg)
+![iPad Ethernet set-up](/images/2020-02-09-Connecting-a-Raspberry-PI-4-to-an-Ipad-iPad-Ethernet-Setup.jpg)
 
 # Credits
 - [Ben Hardill](https://www.hardill.me.uk/wordpress/about/): [PI-4 USB-C Gadget](https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/)
