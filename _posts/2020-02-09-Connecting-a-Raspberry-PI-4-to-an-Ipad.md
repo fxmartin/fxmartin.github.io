@@ -18,9 +18,11 @@ First you have to install [Raspbian](https://www.raspberrypi.org/downloads/raspb
 Considering that this set up has been possible thanks to a recent update to the Raspberry Pi 4 bootloader - it now not only enables the low power mode for USB hardware but also allows the enabling of Network boot and enables data over the USB-C port - I recommend setting up your Pi so that it automatically updates the boot loader: this means you will get new features and bug fixes as they are released.
 
 Bootloader updates are performed by the ``rpi-eeprom`` packages which installs a service that runs at boot-time to check for critical updates.
-```sudo apt update
+```
+sudo apt update
 sudo apt full-upgrade
-sudo apt install rip-eeprom```
+sudo apt install rip-eeprom
+```
 
 If you wish to control then the updates are applied you can disable the systems service from running automatically and run ``reset-eeprom-update`` manually.
 ```
