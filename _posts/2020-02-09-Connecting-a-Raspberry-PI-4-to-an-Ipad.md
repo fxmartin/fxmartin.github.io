@@ -94,6 +94,10 @@ Add ``sh /root/usb.sh`` to ``/etc/rc.local`` before ``exit 0`` (I really should 
 
 With this setup the Pi4 will show up as a ethernet device with an IP address of 10.55.0.1 and will assign the device you plug it into an IP address via DHCP. This means you can just ssh to pi@10.55.0.1 to start using it.
 
+Notes:
+So far I did not manage to have the iPad get its IP from the Raspberry so for the time being I set it up manually as follows:
+[iPad Ethernet set-up](/images/2020-02-09-Connecting-a-Raspberry-PI-4-to-an-Ipad-iPad-Ethernet-Setup.jpg)
+
 # Credits
 - [Ben Hardill](https://www.hardill.me.uk/wordpress/about/): [PI-4 USB-C Gadget](https://www.hardill.me.uk/wordpress/2019/11/02/pi4-usb-c-gadget/)
 - [Connect your Raspberry Pi 4 to an IPad Pro](https://www.raspberrypi.org/blog/connect-your-raspberry-pi-4-to-an-ipad-pro/)
