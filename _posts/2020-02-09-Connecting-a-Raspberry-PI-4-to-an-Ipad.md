@@ -18,15 +18,12 @@ First you have to install [Raspbian](https://www.raspberrypi.org/downloads/raspb
 Considering that this set up has been possible thanks to a recent update to the Raspberry Pi 4 bootloader - it now not only enables the low power mode for USB hardware but also allows the enabling of Network boot and enables data over the USB-C port - I recommend setting up your Pi so that it automatically updates the boot loader: this means you will get new features and bug fixes as they are released.
 
 Bootloader updates are performed by the ``rpi-eeprom`` packages which installs a service that runs at boot-time to check for critical updates.
-
 ```
 sudo apt update
 sudo apt full-upgrade
 sudo apt install rip-eeprom
 ```
-
 If you wish to control then the updates are applied you can disable the systems service from running automatically and run ``reset-eeprom-update`` manually.
-
 ```
 # Prevent the service from running, this can be run before the
 # package is installed to prevent it ever running automatically.
@@ -35,9 +32,7 @@ sudo system to mask rpi-eeprom-update
 # Enable it again
 sudo systemctl unmask rpi-eeprom-update
 ```
-
 With this enabled all the same script from the Pi Zero’s should just work but here is the updated version for Raspbian Buster.
-
 Add ``dtoverlay=dwc2`` to the ``/boot/config.txt``
 Add ``modules-load=dwc2`` to the end of ``/boot/cmdline.txt``
 If you have not already enabled ssh then create a empty file called ``ssh`` in ``/boot``
@@ -45,16 +40,13 @@ Add ``libcomposite`` to ``/etc/modules``
 Add ``denyinterfaces usb0`` to ``/etc/dhcpcd.conf``
 Install dnsmasq with ``sudo apt-get install dnsmasq``
 Create ``/etc/dnsmasq.d/usb`` with following content
-
 ```
 interface=usb0
 dhcp-range=10.55.0.2,10.55.0.6,255.255.255.248,1h
 dhcp-option=3
 leasefile-ro
 ```
-
 Create ``/etc/network/interfaces.d/usb0`` with the following content
-
 ```
 auto usb0
 allow-hotplug usb0
@@ -62,9 +54,7 @@ iface usb0 inet static
   address 10.55.0.1
   netmask 255.255.255.248
 ```
-
 Create ``/root/usb.sh``
-
 ```
 #!/bin/bash
 cd /sys/kernel/config/usb_gadget/
@@ -98,7 +88,6 @@ ls /sys/class/udc > UDC
 ifup usb0
 service dnsmasq restart
 ```
-
 Make ``/root/usb.sh`` executable with ``chmod +x /root/usb.sh``
 Add ``sh /root/usb.sh`` to ``/etc/rc.local`` before ``exit 0`` (I really should add a systemd startup script here at some point)
 
