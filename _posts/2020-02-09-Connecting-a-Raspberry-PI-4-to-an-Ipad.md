@@ -82,12 +82,19 @@ If it runs successfully, then you can be sure that the new account is in the sud
 # Set-up Connection through USB-C with iPad
 
 With this enabled all the same script from the Pi Zero’s should just work but here is the updated version for Raspbian Buster.
+
 Add ``dtoverlay=dwc2`` to the ``/boot/config.txt``
+
 Add ``modules-load=dwc2`` to the end of ``/boot/cmdline.txt``
+
 If you have not already enabled ssh then create a empty file called ``ssh`` in ``/boot``
+
 Add ``libcomposite`` to ``/etc/modules``
+
 Add ``denyinterfaces usb0`` to ``/etc/dhcpcd.conf``
+
 Install dnsmasq with ``sudo apt-get install dnsmasq``
+
 Create ``/etc/dnsmasq.d/usb`` with following content
 ```
 interface=usb0
@@ -95,6 +102,7 @@ dhcp-range=10.55.0.2,10.55.0.6,255.255.255.248,1h
 dhcp-option=3
 leasefile-ro
 ```
+
 Create ``/etc/network/interfaces.d/usb0`` with the following content
 ```
 auto usb0
@@ -103,6 +111,7 @@ iface usb0 inet static
   address 10.55.0.1
   netmask 255.255.255.248
 ```
+
 Create ``/root/usb.sh``
 ```
 #!/bin/bash
