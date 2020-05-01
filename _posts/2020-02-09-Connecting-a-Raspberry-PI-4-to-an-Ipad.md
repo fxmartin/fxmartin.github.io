@@ -217,7 +217,7 @@ In Blink you can set-up specific hosts and create SSH keys. You do so via the co
 
 ![Setting up an SSH key in Blink](/images/2020-02-09-Connecting-a-Raspberry-PI-4-to-an-Ipad-Blink-Keys.jpg)
 
-The you copy the public key to your Pi and next time you SSH no password will be requested.
+Then you copy the public key to your Pi and next time you SSH no password will be requested.
 ![Sending the public key to the Pi](/images/2020-02-09-Connecting-a-Raspberry-PI-4-to-an-Ipad-Blink-Copy-Keys.jpg)
 
 Finally, we need to disable password logins, so that all authentication is done by the key pairs.
