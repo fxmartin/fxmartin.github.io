@@ -22,7 +22,7 @@ Bootloader updates are performed by the ``rpi-eeprom`` packages which installs a
 ```
 sudo apt update
 sudo apt full-upgrade
-sudo apt install rip-eeprom
+sudo apt install rpi-eeprom
 ```
 
 If you wish to control then the updates are applied you can disable the systems service from running automatically and run ``reset-eeprom-update`` manually.
@@ -147,13 +147,29 @@ ifup usb0
 service dnsmasq restart
 ```
 Make ``/root/usb.sh`` executable with ``chmod +x /root/usb.sh``
+
 Add ``sh /root/usb.sh`` to ``/etc/rc.local`` before ``exit 0`` (I really should add a systemd startup script here at some point)
 
 With this setup the Pi4 will show up as a ethernet device with an IP address of 10.55.0.1 and will assign the device you plug it into an IP address via DHCP. This means you can just ssh to pi@10.55.0.1 to start using it.
 
 **Notes:**
-So far I did not manage to have the iPad get its IP from the Raspberry so for the time being I set it up manually as follows:
+With my first attempt I did not manage to have the iPad get its IP from the Raspberry so for the time being I set it up manually as follows:
 ![iPad Ethernet set-up](/images/2020-02-09-Connecting-a-Raspberry-PI-4-to-an-Ipad-iPad-Ethernet-Setup.jpg)
+
+After a full reinstallation I managed to get it working so I believe there was a typo in my first attempt.
+
+When trying to connect from Blinkt! via SSH you might encounter the following error if you previously set-up an SSH connection to the same server:
+```
+blink> ssh pipad.local
+Host key for server changed.
+Ed25519 key fingerprint is SHA256:gvGAa2D1yVxpJoiAI/awyk2Dq9YU12TYtSHmDxo76sE.
+For security reason, connection will be stopped
+```
+
+To solve this problem you can remove the old key using the ssh-keygen command:
+```
+blink> ssh-keygen -R 10.55.0.1
+``` 
 
 From this point you can connect to your Raspberry Pi through [Blink](https://www.blink.sh/) which is an incredible terminal emulator for iOS by simply entering the following command ``ssh pi@10.55.0.1``.
 
