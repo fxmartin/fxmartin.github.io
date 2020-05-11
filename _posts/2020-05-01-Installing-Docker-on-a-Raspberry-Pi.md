@@ -32,9 +32,11 @@ The final program is available on GitHub [github.com/fxmartin/ScrollPhatDockerPi
 
 All the examples I found were clearing/updating the full matrix of LEDs resulting in a kind of blinking effect. I looked for a smarter way to shut on/off the LEDs in order to avoid the blinking effect.
 
-Below a short video to demonstrate how it works.
+Below a short video to demonstrate how it works. I took this video while compiling CV2 library so it explains why the CPU load is high. It was a good way to test the program and the PI.
 
 ![ScrollPhat demo](/images/ScrollPhatVideo.MOV)
+
+Initially I included the monitoring of docker containers but when trying to run the Python program as a service then I faced an error message with ``import docker`` so after 2h of investigations I decided to remove it.
 
 # Credits
 - [Revsol/blinkt-cpu-info](https://github.com/Revsol/blinkt-cpu-info)
