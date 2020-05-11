@@ -22,6 +22,20 @@ To check everything worked you can list the running containers (which should com
 $ docker ps
 ```
 
+I found a ScrollPhat from Pimoroni in one of my cupboard and I decided to use it to monitor the Raspberry Pi.
+
+The idea is to write a Python program to display temperature, CPU load and number of containers running on Docker.
+
+It will also be the occasion to explore a bit more Python and especially parameters management.
+
+The final program is available on GitHub [github.com/fxmartin/ScrollPhatDockerPi](https://github.com/fxmartin/ScrollPhatDockerPi)
+
+All the examples I found were clearing/updating the full matrix of LEDs resulting in a kind of blinking effect. I looked for a smarter way to shut on/off the LEDs in order to avoid the blinking effect.
+
+Below a short video to demonstrate how it works.
+
+![ScrollPhat demo](/images/ScrollPhatVideo.MOV)
+
 # Credits
 - [Revsol/blinkt-cpu-info](https://github.com/Revsol/blinkt-cpu-info)
 - [How to monitor docker and automatically start containers?](https://fxmartin.github.io/How-to-monitor-docker-and-automatically-start-containers/)
